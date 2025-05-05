@@ -1,13 +1,15 @@
+import MovieCard from "./components/MovieCard"
+import Home from "./pages/Home"
 
 
 function App() {
  
 
   return (
-    <div>
-      <p>Hello World</p>
-    </div>
+    <>
+      <Home />
+      </>
   )
 }
 
-export default App
+export default App; 
