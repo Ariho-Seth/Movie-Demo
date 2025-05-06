@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { getPopularMovies, searchMovies } from "../services/api.js"
 import MovieCard from "../components/MovieCard";
 import "../css/Home.css"
+import { useMovieContext } from "../components/contexts/MovieContext.jsx";
 
 const Home = () => {
-
+    
     const [searchQuery, setSearchQuery] = useState();
 
     const [movies, setMovies] = useState([]);
@@ -29,26 +30,26 @@ const Home = () => {
 
     }, [])
 
-    const handleSearch = async(e) => {
+    const handleSearch = async (e) => {
         e.preventDefault();
 
-   
-        if(!searchQuery.trim()) return;
-        if(isLoading) return;
+
+        if (!searchQuery.trim()) return;
+        if (isLoading) return;
         setIsLoading(true)
-        try{
-            
-            const searhResults= await searchMovies(searchQuery);
+        try {
+
+            const searhResults = await searchMovies(searchQuery);
             setMovies(searhResults);
-        }catch(error){
+        } catch (error) {
             console.log(error)
             setError("Failed to search Movies")
 
-        }finally{
+        } finally {
             setIsLoading(false);
         }
 
-      
+
 
     }
 
@@ -61,18 +62,18 @@ const Home = () => {
                     value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)} />
                 <button type="submit" className="search-btn">Search</button>
-            
+
             </form>
-           
-                {isLoading ? (<div><p>Loading Movies...</p></div>) : 
+
+            {isLoading ? (<div><p>Loading Movies...</p></div>) :
                 (<div className="movies-grid">
-                    {movies.map(movie=>(
-                        <MovieCard movie={movie} key={movie.id}/>
+                    {movies.map(movie => (
+                        <MovieCard movie={movie} key={movie.id} />
                     ))}
 
                 </div>)}
-            </div>
-       
+        </div>
+
     )
 
 }

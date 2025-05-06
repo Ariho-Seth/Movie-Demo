@@ -1,4 +1,5 @@
 
+import { MovieProvider } from "./components/contexts/MovieContext";
 import Navbar from "./components/Navbar";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home"
@@ -10,7 +11,7 @@ function App() {
 
   return (
 
-    <div>
+    <MovieProvider>
       <Navbar />
       <main className="main-content">
         <Routes>
@@ -19,7 +20,7 @@ function App() {
         </Routes>
       </main>
 
-    </div>
+    </MovieProvider>
 
   )
 }
