@@ -2,7 +2,10 @@
 const Favorites=()=>{
 
     return(
-        <div></div>
+        <div className="favorites-empty">
+            <h2>No Favorites Here</h2>
+            <p>Your Favorites will be showed here</p>
+        </div>
     )
 
 }
